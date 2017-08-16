@@ -28,7 +28,7 @@ const loginUserSuccess = (dispatch, user) => {
         paylaod: user
     });
 
-    Actions.employeelist();
+    Actions.main();
 }
 
 const loginUserFail = (dispatch) => {

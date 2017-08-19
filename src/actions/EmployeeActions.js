@@ -23,7 +23,7 @@ export const employeeCreate = ({ name, phone, shift }) => {
         .push({ name, phone, shift })
         .then(() =>
             dispatch({ type: EMPLOYEE_CREATE }),
-            Actions.employeelist( { type: 'reset' }));
+            Actions.employeelist({ type: 'reset' }));
     };
 };
 
@@ -41,7 +41,7 @@ export const employeesFetch = () => {
 export const employeeSave = ({ name, phone, shift, uid }) => {
     const { currentUser } = firebase.auth();
 
-    return () => {
+    return (dispatch) => {
         firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
             .set({ name, phone, shift })
             .then(() =>
@@ -56,8 +56,7 @@ export const employeeDelete = ({ uid }) => {
     return () => {
         firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
             .remove()
-            .then(() =>{
-                Actions.employeelist({ type: 'reset'});
-            });
+            .then(() =>
+                Actions.employeelist({ type: 'reset'}));
     };
 };

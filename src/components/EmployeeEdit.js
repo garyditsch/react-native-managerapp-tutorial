@@ -26,7 +26,7 @@ class EmployeeEdit extends Component {
     }
 
     onAccept() {
-        const { uid } = this.props.employee    
+        const { uid } = this.props.employee
         this.props.employeeDelete({uid});
     }
 
@@ -48,12 +48,12 @@ class EmployeeEdit extends Component {
                         Text Schedule
                     </Button>
                 </CardSection>
+                <CardSection>
                     <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
                         Fire Employee
                     </Button>
-                <CardSection>
-
                 </CardSection>
+
                 <Confirm
                     visible={this.state.showModal}
                     onAccept={this.onAccept.bind(this)}
